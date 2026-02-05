@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d2n6l0eto2grf"]
+
+[ext_resource type="PackedScene" uid="uid://dgak7y6xtfgy6" path="res://scenes/startupUI.tscn" id="1_qx56x"]
+
+[node name="startscreen" type="Node2D" unique_id=923426336]
+
+[node name="UI" parent="." unique_id=395359593 instance=ExtResource("1_qx56x")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 16.0
+offset_top = 18.0
+offset_right = 16.0
+offset_bottom = 18.0
+grow_horizontal = 1
+grow_vertical = 1
