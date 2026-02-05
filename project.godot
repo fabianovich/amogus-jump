@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="doodlejump"
-run/main_scene="uid://nd8vnys63l37"
+run/main_scene="uid://d2n6l0eto2grf"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Networkhandler="*uid://bilbd6gyen63i"
 
 [display]
 
