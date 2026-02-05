@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dkwmtpiecxdyd"]
+
+[ext_resource type="Texture2D" uid="uid://ffc6cb362r0k" path="res://assets/amogus.png" id="1_wcp6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71ruo"]
+size = Vector2(246, 242)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=463361406]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2107289954]
+position = Vector2(-12, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_wcp6n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1381589742]
+position = Vector2(-8, -2.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_71ruo")
