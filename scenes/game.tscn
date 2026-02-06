@@ -3,43 +3,12 @@
 [ext_resource type="Script" uid="uid://6o2rugdk7yt3" path="res://code/spawnplatforms.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://dkwmtpiecxdyd" path="res://scenes/amogus.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bju1bjnmgkqvy" path="res://code/movenement.gd" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://brpwbi7ufmsub" path="res://code/timer.gd" id="4_lbhrr"]
-
-[sub_resource type="FontFile" id="FontFile_iywne"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/116/0/ascent = 0.0
-cache/0/116/0/descent = 0.0
-cache/0/116/0/underline_position = 0.0
-cache/0/116/0/underline_thickness = 0.0
-cache/0/116/0/scale = 1.0
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/75/0/ascent = 0.0
-cache/0/75/0/descent = 0.0
-cache/0/75/0/underline_position = 0.0
-cache/0/75/0/underline_thickness = 0.0
-cache/0/75/0/scale = 1.0
+[ext_resource type="Script" uid="uid://bntqhoalfvvbk" path="res://code/multiplayer_spawner.gd" id="4_lbhrr"]
 
 [node name="game" type="Node2D" unique_id=456397269]
 
 [node name="Character" parent="." unique_id=2123447566 instance=ExtResource("1_uwrxv")]
-position = Vector2(300, 550)
+position = Vector2(384, 554)
 script = ExtResource("3_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="Character" unique_id=1559321349]
@@ -52,20 +21,8 @@ drag_vertical_enabled = true
 [node name="Platforms" type="Node" parent="." unique_id=158294317]
 script = ExtResource("1_iywne")
 
-[node name="Timer" type="Timer" parent="." unique_id=1695957978]
-autostart = true
-
-[node name="Label" type="Label" parent="." unique_id=1714914573]
-offset_left = 259.0
-offset_top = 301.0
-offset_right = 333.0
-offset_bottom = 437.0
-theme_override_fonts/font = SubResource("FontFile_iywne")
-theme_override_font_sizes/font_size = 75
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1573273781]
+_spawnable_scenes = PackedStringArray("uid://dkwmtpiecxdyd")
+spawn_path = NodePath("..")
 script = ExtResource("4_lbhrr")
-
-[connection signal="timeout" from="Timer" to="Character" method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer" to="Label" method="_on_timer_timeout"]
+network_player = ExtResource("1_uwrxv")
