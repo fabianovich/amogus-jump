@@ -4,10 +4,10 @@ extends Node
 @onready var character = $"../Character"
 
 @onready var collisionScript = preload("res://code/collisions.gd")
-var y_pos = 550
+var y_pos = 551
 const y_interval = 150
 var x
-var prevx = 0
+var prevx = 300
 
 func _ready() -> void:
 	var instance = scene.instantiate()
