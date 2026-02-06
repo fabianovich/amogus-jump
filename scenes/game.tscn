@@ -15,7 +15,7 @@ script = ExtResource("3_lnu2h")
 position = Vector2(-84, -154)
 limit_left = 0
 limit_right = 600
-position_smoothing_enabled = true
+limit_smoothed = true
 drag_vertical_enabled = true
 
 [node name="Platforms" type="Node" parent="." unique_id=158294317]
