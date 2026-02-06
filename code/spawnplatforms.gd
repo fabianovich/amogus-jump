@@ -25,5 +25,4 @@ func _process(_delta):
 		instance.set_script(collisionScript)
 		y_pos -= y_interval
 		add_child(instance)
-		print("ligma balls")
 	
