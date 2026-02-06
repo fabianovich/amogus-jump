@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d2n6l0eto2grf"]
+
+[ext_resource type="Script" uid="uid://be15yvyscaat" path="res://code/button.gd" id="1_qx56x"]
+
+[node name="startscreen" type="Node2D" unique_id=1532281788]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=774084808]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 246.0
+offset_top = 378.0
+offset_right = 338.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=794119665]
+layout_mode = 2
+text = "start game"
+script = ExtResource("1_qx56x")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]
