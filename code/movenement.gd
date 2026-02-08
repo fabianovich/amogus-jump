@@ -4,6 +4,10 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 var movenement = false
 @onready var gameNode = get_node("..")
+@onready var previous_y = 0.
+@onready var highest_y = position.y
+func _ready():
+	previous_y = position.y
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -14,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
-			gameNode.score += 1
+			
 		
 		var direction := Input.get_axis("ui_left", "ui_right")
 		if direction:
@@ -27,6 +31,8 @@ func _physics_process(delta: float) -> void:
 	#	velocity.y = JUMP_VELOCITY
 		
 	# flip player
+	
+	
 	if Input.is_action_pressed("ui_left"):
 	#if Input.is_action_just_pressed("ui_left"):
 		if $Sprite2D.flip_h:
@@ -35,8 +41,17 @@ func _physics_process(delta: float) -> void:
 		if not $Sprite2D.flip_h:
 			$Sprite2D.flip_h = true
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# calculate y difference
+	var current_y = position.y
+	var y_difference = current_y - previous_y
+	
+	if y_difference < 0:
+		if movenement:
+			if position.y < highest_y:
+				gameNode.y_difference = abs(y_difference)
+				highest_y = position.y
+	
+	previous_y = current_y
 
 		
 	if position.x < 0:

@@ -6,6 +6,7 @@ extends Node
 @onready var collisionScript = preload("res://code/collisions.gd")
 var y_pos = 551
 const y_interval = 150
+const x_interval = 150
 var x
 var prevx = 300
 
@@ -21,7 +22,7 @@ func _process(_delta):
 		var instance = scene.instantiate()
 		while true:
 			x = randf_range(0, 600)
-			if abs(x - prevx) < 100:
+			if abs(x - prevx) < x_interval:
 				pass
 			else:
 				prevx = x

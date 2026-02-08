@@ -71,10 +71,11 @@ script = ExtResource("4_lbhrr")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1279763107]
 
 [node name="Score" type="Label" parent="CanvasLayer" unique_id=544060313]
-offset_left = 272.0
-offset_top = 256.0
-offset_right = 312.0
-offset_bottom = 279.0
+offset_left = 46.0
+offset_top = 44.0
+offset_right = 86.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 51
 
 [connection signal="timeout" from="Timer" to="Character" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="Countdown" method="_on_timer_timeout"]
