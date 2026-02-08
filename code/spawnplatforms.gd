@@ -1,6 +1,7 @@
 extends Node
 
 @onready var scene = preload("res://scenes/platform.tscn")
+@onready var springScene = preload("res://scenes/spring.tscn")
 @onready var character = $"../Character"
 
 @onready var collisionScript = preload("res://code/collisions.gd")
@@ -30,6 +31,11 @@ func _process(_delta):
 			
 		instance.position = Vector2(x, y_pos)
 		instance.set_script(collisionScript)
-		y_pos -= y_interval
 		add_child(instance)
+		if randi_range(0, 15) == 1:
+			var spring = springScene.instantiate()
+			instance.position = Vector2(x, y_pos)
+			instance.set_script(""res://code/spring.gd"
+		y_pos -= y_interval
+
 	
