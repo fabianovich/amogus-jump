@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cl6ypa1rp43ap"]
+
+[ext_resource type="Texture2D" uid="uid://yf58eemkvwgs" path="res://assets/spring.png" id="1_6vrsj"]
+[ext_resource type="Texture2D" uid="uid://bel60ww577bcq" path="res://assets/sping2.png" id="2_f6w1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iudvb"]
+size = Vector2(234, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l13eo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6vrsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f6w1c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="spring" type="Area2D" unique_id=2124534699]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420755859]
+position = Vector2(7, 44)
+shape = SubResource("RectangleShape2D_iudvb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=716258572]
+sprite_frames = SubResource("SpriteFrames_l13eo")
+frame = 1
+frame_progress = 0.46118477
