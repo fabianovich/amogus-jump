@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkwmtpiecxdyd" path="res://scenes/amogus.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bju1bjnmgkqvy" path="res://code/movenement.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://brpwbi7ufmsub" path="res://code/timer.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://dk6lpmv3fajr2" path="res://code/fps_count.gd" id="6_p57ef"]
 
 [sub_resource type="FontFile" id="FontFile_iywne"]
 cache/0/variation_coordinates = {}
@@ -76,6 +77,13 @@ offset_top = 44.0
 offset_right = 86.0
 offset_bottom = 116.0
 theme_override_font_sizes/font_size = 51
+
+[node name="FPSCount" type="Label" parent="CanvasLayer" unique_id=569439268]
+offset_left = 466.0
+offset_top = 44.0
+offset_right = 506.0
+offset_bottom = 67.0
+script = ExtResource("6_p57ef")
 
 [connection signal="timeout" from="Timer" to="Character" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="Countdown" method="_on_timer_timeout"]
