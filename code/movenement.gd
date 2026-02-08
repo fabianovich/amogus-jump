@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 var movenement = false
+@onready var gameNode = get_node("..")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -13,6 +14,7 @@ func _physics_process(delta: float) -> void:
 	
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			gameNode.score += 1
 		
 		var direction := Input.get_axis("ui_left", "ui_right")
 		if direction:
