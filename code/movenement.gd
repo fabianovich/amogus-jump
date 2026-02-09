@@ -7,6 +7,8 @@ var movenement = false
 @onready var gameNode = get_node("..")
 @onready var previous_y = 0.
 @onready var highest_y = position.y
+
+
 func _ready():
 	previous_y = position.y
 
@@ -15,17 +17,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if movenement:
 	
-		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			
 		
-		var direction := Input.get_axis("ui_left", "ui_right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -68,8 +61,20 @@ func _physics_process(delta: float) -> void:
 			var body := collision.get_collider()
 			print("Collided with: ", body.name)
 			if "springPlatform" in body.name:
-				velocity.y += SPRING_VELOCITY
+				velocity.y = SPRING_VELOCITY
+				
 				print("yes")
-	#if jump:
+			else: 
+				if is_on_floor():
+					velocity.y = JUMP_VELOCITY
+			
+		
+		var direction := Input.get_axis("ui_left", "ui_right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+
+		print(velocity.y)
 		
 	
