@@ -38,7 +38,7 @@ func _process(_delta):
 		if randi_range(0, 10) == 1:
 			platform.name = "springPlatform" + str(springAmount)
 			var springInstance = springScene.instantiate()
-			springInstance.position = Vector2(x, y_pos)
+			springInstance.position = Vector2(x, y_pos-25)
 			# spring.set_script("res://code/spring.gd")
 			add_child(springInstance)
 			springInstance.name = "spring" + str(springAmount)
