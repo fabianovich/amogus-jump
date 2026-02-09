@@ -1,5 +1,5 @@
 extends Label
-var countdown = 5
+var countdown = 3
 @onready var character = get_node("../Character")
 
 

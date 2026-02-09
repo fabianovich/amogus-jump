@@ -9,7 +9,9 @@ var movenement = false
 @onready var highest_y = position.y
 
 
+
 func _ready():
+	
 	previous_y = position.y
 
 func _physics_process(delta: float) -> void:
@@ -27,11 +29,11 @@ func _physics_process(delta: float) -> void:
 	# flip player
 	
 	
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 	#if Input.is_action_just_pressed("ui_left"):
 		if $Sprite2D.flip_h:
 			$Sprite2D.flip_h = false
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		if not $Sprite2D.flip_h:
 			$Sprite2D.flip_h = true
 
@@ -60,21 +62,29 @@ func _physics_process(delta: float) -> void:
 			var collision := get_slide_collision(index)
 			var body := collision.get_collider()
 			print("Collided with: ", body.name)
-			if "springPlatform" in body.name:
-				velocity.y = SPRING_VELOCITY
-				
-				print("yes")
-			else: 
-				if is_on_floor():
+			if is_on_floor():
+				if "springPlatform" in body.name:
+					velocity.y = SPRING_VELOCITY
+					var id = extract_id(body.name)
+					get_node("../Platforms/spring" + id + "/AnimatedSprite2D").frame = 1
+					print("yes")
+				else: 
 					velocity.y = JUMP_VELOCITY
 			
 		
-		var direction := Input.get_axis("ui_left", "ui_right")
+		var direction := Input.get_axis("left", "right")
 		if direction:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		print(velocity.y)
 		
-	
+func extract_id(body_name):
+	var regex = RegEx.new()
+	regex.compile("[0-9]+")
+	#get spring id
+	var IsId = regex.search(body_name)
+	if IsId:
+		return str(IsId.get_string())
+	else:
+		return ""

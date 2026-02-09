@@ -30,5 +30,3 @@ shape = SubResource("RectangleShape2D_iudvb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=716258572]
 scale = Vector2(0.245, 0.245)
 sprite_frames = SubResource("SpriteFrames_l13eo")
-frame = 1
-frame_progress = 0.48127007

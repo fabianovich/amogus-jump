@@ -41,7 +41,11 @@ cache/0/75/0/scale = 1.0
 [node name="game" type="Node2D" unique_id=456397269]
 script = ExtResource("1_p57ef")
 
+[node name="Platforms" type="Node" parent="." unique_id=158294317]
+script = ExtResource("1_iywne")
+
 [node name="Character" parent="." unique_id=2123447566 instance=ExtResource("1_uwrxv")]
+z_index = 1
 position = Vector2(300, 550)
 script = ExtResource("3_lnu2h")
 
@@ -51,9 +55,6 @@ limit_left = 0
 limit_right = 600
 limit_smoothed = true
 drag_vertical_enabled = true
-
-[node name="Platforms" type="Node" parent="." unique_id=158294317]
-script = ExtResource("1_iywne")
 
 [node name="Timer" type="Timer" parent="." unique_id=1695957978]
 autostart = true
