@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
+const SPRING_VELOCITY = -1500
 var movenement = false
 @onready var gameNode = get_node("..")
 @onready var previous_y = 0.
@@ -66,4 +67,9 @@ func _physics_process(delta: float) -> void:
 			var collision := get_slide_collision(index)
 			var body := collision.get_collider()
 			print("Collided with: ", body.name)
+			if "springPlatform" in body.name:
+				velocity.y += SPRING_VELOCITY
+				print("yes")
+	#if jump:
+		
 	

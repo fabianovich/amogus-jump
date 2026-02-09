@@ -21,7 +21,8 @@ func _ready() -> void:
 
 func _process(_delta):
 	if abs(character.position.y - y_pos) < 800:
-		var instance = scene.instantiate()
+		var platform = scene.instantiate()
+		platform.name = "platform"
 		while true:
 			x = randf_range(0, 600)
 			if abs(x - prevx) < x_interval:
@@ -30,19 +31,16 @@ func _process(_delta):
 				prevx = x
 				break
 			
-		instance.position = Vector2(x, y_pos)
-		instance.set_script(collisionScript)
+		platform.position = Vector2(x, y_pos)
+		platform.set_script(collisionScript)
+		add_child(platform)
 		if randi_range(0, 10) == 1:
-			instance.name = "springPlatform"
-			spring = true
-		else:
-			spring = false
-		add_child(instance)
-		if spring:
-			var springbro = springScene.instantiate()
-			springbro.position = Vector2(x, y_pos)
+			platform.name = "springPlatform"
+			var springInstance = springScene.instantiate()
+			springInstance.position = Vector2(x, y_pos)
 			# spring.set_script("res://code/spring.gd")
-			add_child(springbro)
+			add_child(springInstance)
+			
 		y_pos -= y_interval
 
 	
