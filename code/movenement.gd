@@ -61,4 +61,9 @@ func _physics_process(delta: float) -> void:
 		position.x = 0
 
 	move_and_slide()
+	if movenement:
+		for index in get_slide_collision_count():
+			var collision := get_slide_collision(index)
+			var body := collision.get_collider()
+			print("Collided with: ", body.name)
 	

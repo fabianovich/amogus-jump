@@ -10,6 +10,7 @@ const y_interval = 150
 const x_interval = 150
 var x
 var prevx = 300
+var spring
 
 func _ready() -> void:
 	var instance = scene.instantiate()
@@ -31,11 +32,17 @@ func _process(_delta):
 			
 		instance.position = Vector2(x, y_pos)
 		instance.set_script(collisionScript)
+		if randi_range(0, 10) == 1:
+			instance.name = "springPlatform"
+			spring = true
+		else:
+			spring = false
 		add_child(instance)
-		if randi_range(0, 15) == 1:
-			var spring = springScene.instantiate()
-			instance.position = Vector2(x, y_pos)
-			instance.set_script(""res://code/spring.gd"
+		if spring:
+			var springbro = springScene.instantiate()
+			springbro.position = Vector2(x, y_pos)
+			# spring.set_script("res://code/spring.gd")
+			add_child(springbro)
 		y_pos -= y_interval
 
 	
