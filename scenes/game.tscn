@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://6o2rugdk7yt3" path="res://code/spawnplatforms.gd" id="1_iywne"]
 [ext_resource type="Script" uid="uid://bl1wu274pqwjy" path="res://code/score.gd" id="1_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dkwmtpiecxdyd" path="res://scenes/amogus.tscn" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://bju1bjnmgkqvy" path="res://code/movenement.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://brpwbi7ufmsub" path="res://code/timer.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://dk6lpmv3fajr2" path="res://code/fps_count.gd" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://c11ku1jclb08e" path="res://code/multiplayer_spawner.gd" id="7_u5sy4"]
 
 [sub_resource type="FontFile" id="FontFile_iywne"]
 cache/0/variation_coordinates = {}
@@ -44,18 +44,6 @@ script = ExtResource("1_p57ef")
 [node name="Platforms" type="Node" parent="." unique_id=158294317]
 script = ExtResource("1_iywne")
 
-[node name="Character" parent="." unique_id=2123447566 instance=ExtResource("1_uwrxv")]
-z_index = 1
-position = Vector2(300, 550)
-script = ExtResource("3_lnu2h")
-
-[node name="Camera2D" type="Camera2D" parent="Character" unique_id=1559321349]
-position = Vector2(0, -150)
-limit_left = 0
-limit_right = 600
-limit_smoothed = true
-drag_vertical_enabled = true
-
 [node name="Timer" type="Timer" parent="." unique_id=1695957978]
 autostart = true
 
@@ -86,5 +74,10 @@ offset_right = 506.0
 offset_bottom = 67.0
 script = ExtResource("6_p57ef")
 
-[connection signal="timeout" from="Timer" to="Character" method="_on_timer_timeout"]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=221754524]
+_spawnable_scenes = PackedStringArray("uid://dkwmtpiecxdyd")
+spawn_path = NodePath("..")
+script = ExtResource("7_u5sy4")
+network_player = ExtResource("1_uwrxv")
+
 [connection signal="timeout" from="Timer" to="Countdown" method="_on_timer_timeout"]

@@ -8,6 +8,8 @@ var movenement = false
 @onready var previous_y = 0.
 @onready var highest_y = position.y
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 
 
 func _ready():
@@ -15,6 +17,7 @@ func _ready():
 	previous_y = position.y
 
 func _physics_process(delta: float) -> void:
+	if !is_multiplayer_authority(): return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -61,13 +64,11 @@ func _physics_process(delta: float) -> void:
 		for index in get_slide_collision_count():
 			var collision := get_slide_collision(index)
 			var body := collision.get_collider()
-			print("Collided with: ", body.name)
 			if is_on_floor():
 				if "springPlatform" in body.name:
 					velocity.y = SPRING_VELOCITY
 					var id = extract_id(body.name)
 					get_node("../Platforms/spring" + id + "/AnimatedSprite2D").frame = 1
-					print("yes")
 				else: 
 					velocity.y = JUMP_VELOCITY
 			

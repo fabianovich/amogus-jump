@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://be15yvyscaat" path="res://code/button.gd" id="1_qx56x"]
 [ext_resource type="Texture2D" uid="uid://d2ubf4wpsyxfx" path="res://assets/amogusjump.png" id="2_m1yxm"]
+[ext_resource type="PackedScene" uid="uid://qhj5dg4ryf0x" path="res://scenes/network_ui.tscn" id="3_o6o42"]
 
 [node name="startscreen" type="Node2D" unique_id=1532281788]
 
@@ -21,6 +22,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=794119665]
+visible = false
 layout_mode = 2
 text = "start game"
 script = ExtResource("1_qx56x")
@@ -28,5 +30,11 @@ script = ExtResource("1_qx56x")
 [node name="Amogusjump" type="Sprite2D" parent="." unique_id=314064919]
 position = Vector2(310, 256)
 texture = ExtResource("2_m1yxm")
+
+[node name="NetworkUi" parent="." unique_id=877298582 instance=ExtResource("3_o6o42")]
+offset_left = 292.0
+offset_top = 611.0
+offset_right = 292.0
+offset_bottom = 611.0
 
 [connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]
