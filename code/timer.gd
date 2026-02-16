@@ -1,6 +1,6 @@
 extends Label
 var countdown = 3
-@onready var character = get_node("../Character")
+@onready var gameNode = get_node("..")
 
 
 
@@ -10,5 +10,5 @@ func _on_timer_timeout() -> void:
 		countdown -=1
 	else:
 		text = "start"
-		character.movenement = true
+		gameNode.movenement = true
 		

@@ -3,20 +3,23 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 const SPRING_VELOCITY = -1500
-var movenement = false
 @onready var gameNode = get_node("..")
 @onready var previous_y = 0.
 @onready var highest_y = position.y
+
+
+
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 
 func _ready():
-	
+	position.x = 300
 	previous_y = position.y
 
 func _physics_process(delta: float) -> void:
+	var movenement = gameNode.movenement
 	if !is_multiplayer_authority(): return
 	# Add the gravity.
 	if not is_on_floor():
